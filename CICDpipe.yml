@@ -1,0 +1,95 @@
+image: python:latest
+
+variables:
+  DOCKER_DRIVER: "overlay2"
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_HOST: tcp://docker:2375
+
+# cache:
+#   paths:
+#     - .m2/repository
+
+stages:
+  - build
+  - test
+  - image-build
+  - deploy
+
+app_build_node:
+  stage: build
+  script:
+    - mvn clean
+    - mvn package
+    - ls
+    - ls target
+  artifacts:
+    paths:
+      - target/*.jar
+  when: manual
+
+package_react:
+  services:
+    - docker:dind
+  image: docker:stable
+  stage: image-build
+  script:
+    - apk add --update python3 python3-dev py3-pip
+    - pip3 install awscli --upgrade
+    # - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    # - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    # - export AWS_DEFAULT_REGION=$AWS_REGION
+    # - pwd
+    # - echo "Access key is $AWS_ACCESS_KEY_ID"
+    # - echo "Access key is $AWS_SECRET_ACCESS_KEY"
+    # - $(aws ecr get-login --no-include-email --region us-east-1)
+    - cd ./node/atlas
+    - docker build -t $DOCKER_REGISTRY:atlas-ui-v1.0.0 .
+    - docker images
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - docker push $DOCKER_REGISTRY:atlas-ui-v1.0.0
+    - ls
+  when: manual
+
+package_react_ideas:
+  services:
+    - docker:dind
+  image: docker:stable
+  stage: image-build
+  script:
+    - apk add --update python3 python3-dev py3-pip
+    - pip3 install awscli --upgrade
+    # - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    # - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    # - export AWS_DEFAULT_REGION=$AWS_REGION
+    # - pwd
+    # - echo "Access key is $AWS_ACCESS_KEY_ID"
+    # - echo "Access key is $AWS_SECRET_ACCESS_KEY"
+    # - $(aws ecr get-login --no-include-email --region us-east-1)
+    - cd ./node/commerce
+    - docker build -t $DOCKER_REGISTRY:ideas-ui-v1.0.0 .
+    - docker images
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - docker push $DOCKER_REGISTRY:ideas-ui-v1.0.0
+    - ls
+  when: manual
+
+package_node_api:
+  image: alpine:latest
+  stage: deploy
+  script:
+    - apk add --update python3 python3-dev py3-pip
+    - pip3 install awscli --upgrade
+    # - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    # - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    # - export AWS_DEFAULT_REGION=$AWS_REGION
+    # - pwd
+    # - echo "Access key is $AWS_ACCESS_KEY_ID"
+    # - echo "Access key is $AWS_SECRET_ACCESS_KEY"
+    # - $(aws ecr get-login --no-include-email --region us-east-1)
+    - cd ./node/atlas
+    - docker build -t $DOCKER_REGISTRY:atlas-ui-v1.0.0 .
+    - docker images
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - docker push $DOCKER_REGISTRY:atlas-ui-v1.0.0
+    - ls
+  when: manual
