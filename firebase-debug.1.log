@@ -1,0 +1,81 @@
+[debug] [2023-11-18T12:39:12.579Z] ----------------------------------------------------------------------
+[debug] [2023-11-18T12:39:12.583Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ET\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --debug
+[debug] [2023-11-18T12:39:12.583Z] CLI Version:   12.9.1
+[debug] [2023-11-18T12:39:12.583Z] Platform:      win32
+[debug] [2023-11-18T12:39:12.584Z] Node Version:  v20.9.0
+[debug] [2023-11-18T12:39:12.584Z] Time:          Sat Nov 18 2023 12:39:12 GMT+0000 (Coordinated Universal Time)
+[debug] [2023-11-18T12:39:12.584Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-18T12:39:12.685Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-18T12:39:12.687Z] > authorizing via signed-in user (austinwillis007@gmail.com)
+[debug] [2023-11-18T12:39:12.688Z] [iam] checking project netflix-4e78e for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-11-18T12:39:12.691Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/netflix-4e78e:testIamPermissions [none]
+[debug] [2023-11-18T12:39:12.692Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/netflix-4e78e:testIamPermissions x-goog-quota-user=projects/netflix-4e78e
+[debug] [2023-11-18T12:39:12.693Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/netflix-4e78e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-11-18T12:39:13.796Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/netflix-4e78e:testIamPermissions 200
+[debug] [2023-11-18T12:39:13.798Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/netflix-4e78e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-11-18T12:39:13.804Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/netflix-4e78e [none]
+[debug] [2023-11-18T12:39:14.224Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/netflix-4e78e 200
+[debug] [2023-11-18T12:39:14.225Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/netflix-4e78e {"projectId":"netflix-4e78e","projectNumber":"272729116552","displayName":"netflix","name":"projects/netflix-4e78e","resources":{"hostingSite":"netflix-4e78e"},"state":"ACTIVE","etag":"1_905cd3ef-c88b-4e67-bb71-85618e50ee7d"}
+[info] 
+[info] === Deploying to 'netflix-4e78e'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-11-18T12:39:14.257Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/versions [none]
+[debug] [2023-11-18T12:39:14.258Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-11-18T12:39:16.208Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/versions 200
+[debug] [2023-11-18T12:39:16.208Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/versions {"name":"projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[netflix-4e78e]: beginning deploy... 
+[info] i  hosting[netflix-4e78e]: found 2 files in build 
+[debug] [2023-11-18T12:39:16.219Z] [hosting] uploading with 200 concurrency
+[debug] [2023-11-18T12:39:16.223Z] [hosting] hash cache [YnVpbGQ] stored for 2 files
+[debug] [2023-11-18T12:39:16.224Z] [hosting][hash queue][FINAL] {"max":1,"min":0,"avg":0,"active":0,"complete":2,"success":2,"errored":0,"retried":0,"total":2,"elapsed":4}
+[debug] [2023-11-18T12:39:16.224Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc:populateFiles [none]
+[debug] [2023-11-18T12:39:16.225Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc:populateFiles {"files":{"/404.html":"daa499dd96d8229e73235345702ba32f0793f0c8e5c0d30e40e37a5872be57aa","/index.html":"e6827d8dda22401e6be53f136a79ce28883c07b995700d89eceb07f70782b051"}}
+[debug] [2023-11-18T12:39:16.834Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc:populateFiles 200
+[debug] [2023-11-18T12:39:16.835Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/netflix-4e78e/versions/5a8b61d0268d0dbc/files"}
+[debug] [2023-11-18T12:39:16.835Z] [hosting][populate queue][FINAL] {"max":613,"min":613,"avg":613,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":613}
+[debug] [2023-11-18T12:39:16.835Z] [hosting] uploads queued: 0
+[debug] [2023-11-18T12:39:16.836Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1700311156836}
+[info] i  hosting: upload complete 
+[info] +  hosting[netflix-4e78e]: file upload complete 
+[debug] [2023-11-18T12:39:16.836Z] [hosting] deploy completed after 625ms
+[debug] [2023-11-18T12:39:16.836Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "netflix-4e78e"
+    },
+    "version": "projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc"
+  }
+]
+[info] i  hosting[netflix-4e78e]: finalizing version... 
+[debug] [2023-11-18T12:39:16.839Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/versions/5a8b61d0268d0dbc updateMask=status%2Cconfig
+[debug] [2023-11-18T12:39:16.839Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/versions/5a8b61d0268d0dbc {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2023-11-18T12:39:17.524Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/versions/5a8b61d0268d0dbc 200
+[debug] [2023-11-18T12:39:17.524Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/versions/5a8b61d0268d0dbc {"name":"projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-18T12:39:23.373650Z","createUser":{"email":"austinwillis007@gmail.com"},"finalizeTime":"2023-11-18T12:39:25.326439Z","finalizeUser":{"email":"austinwillis007@gmail.com"}}
+[debug] [2023-11-18T12:39:17.525Z] [hosting] finalized version for netflix-4e78e:[object Object]
+[info] +  hosting[netflix-4e78e]: version finalized 
+[info] i  hosting[netflix-4e78e]: releasing new version... 
+[debug] [2023-11-18T12:39:17.526Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/channels/live/releases versionName=projects%2F272729116552%2Fsites%2Fnetflix-4e78e%2Fversions%2F5a8b61d0268d0dbc
+[debug] [2023-11-18T12:39:17.526Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/channels/live/releases {}
+[debug] [2023-11-18T12:39:18.193Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/channels/live/releases 200
+[debug] [2023-11-18T12:39:18.194Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/netflix-4e78e/channels/live/releases {"name":"projects/272729116552/sites/netflix-4e78e/channels/live/releases/1700311165308000","version":{"name":"projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-18T12:39:23.373650Z","createUser":{"email":"austinwillis007@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJSSAITweSdeMG6-uH74i0AncsaE_h3b9iqB2ySL1cx=mo"},"finalizeTime":"2023-11-18T12:39:25.326439Z","finalizeUser":{"email":"austinwillis007@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJSSAITweSdeMG6-uH74i0AncsaE_h3b9iqB2ySL1cx=mo"}},"type":"DEPLOY","releaseTime":"2023-11-18T12:39:25.308Z","releaseUser":{"email":"austinwillis007@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJSSAITweSdeMG6-uH74i0AncsaE_h3b9iqB2ySL1cx=mo"}}
+[debug] [2023-11-18T12:39:18.195Z] [hosting] release: {"name":"projects/272729116552/sites/netflix-4e78e/channels/live/releases/1700311165308000","version":{"name":"projects/272729116552/sites/netflix-4e78e/versions/5a8b61d0268d0dbc","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-18T12:39:23.373650Z","createUser":{"email":"austinwillis007@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJSSAITweSdeMG6-uH74i0AncsaE_h3b9iqB2ySL1cx=mo"},"finalizeTime":"2023-11-18T12:39:25.326439Z","finalizeUser":{"email":"austinwillis007@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJSSAITweSdeMG6-uH74i0AncsaE_h3b9iqB2ySL1cx=mo"}},"type":"DEPLOY","releaseTime":"2023-11-18T12:39:25.308Z","releaseUser":{"email":"austinwillis007@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJSSAITweSdeMG6-uH74i0AncsaE_h3b9iqB2ySL1cx=mo"}}
+[info] +  hosting[netflix-4e78e]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/netflix-4e78e/overview
+[info] Hosting URL: https://netflix-4e78e.web.app
